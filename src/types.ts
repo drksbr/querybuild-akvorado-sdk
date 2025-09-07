@@ -1,4 +1,3 @@
-// monitor/types.ts
 export type Alert = {
   kind: string;
   summary: string;
@@ -20,28 +19,6 @@ export type TopPort = { port: string; ppsAvg: number; share: number };
 export type SynAckStats = {
   pps: PpsSeries;
   topDst: TopRow[];
-};
-
-export type CycleStats = {
-  ts: string;
-  legend?: Legend;
-  pps: PpsSeries;
-  smallPkts: { share: number; totalAvgPps: number };
-  topDst: TopRow[];
-  topPorts: TopPort[];
-  synAck?: SynAckStats; // <-- NEW
-  tcpFlags?: TcpFlagBundle; // <-- novo
-  alerts: Alert[];
-};
-
-export type Incident = {
-  id: string;
-  openedAt: string;
-  lastUpdate: string;
-  peakPps: number;
-  peakRatio: number;
-  summary: string;
-  status: "open" | "resolved";
 };
 
 // SDK types

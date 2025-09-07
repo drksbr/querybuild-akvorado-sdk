@@ -1,6 +1,3 @@
-// src/sankey-normalize.ts
-// Normalização de Sankey + emissor DOT com tema por nível (dimensão)
-
 export type SankeyRaw =
   | {
       // formato 1: node-link
@@ -54,20 +51,45 @@ export function normalizeSankey(raw: SankeyRaw): SankeyNormalized {
         (l as any).bytes ??
         (l as any).count ??
         (l as any).v ??
+        (l as any).xps ??
         0;
 
-      const source = toNumber((l as any).source, -1);
-      const target = toNumber((l as any).target, -1);
-      if (!Number.isInteger(source) || !Number.isInteger(target)) continue;
-      if (
-        source < 0 ||
-        target < 0 ||
-        source >= nodes.length ||
-        target >= nodes.length
-      )
-        continue;
+      const source = (l as any).source;
+      const target = (l as any).target;
 
-      const key = `${source}->${target}`;
+      // Se source e target são strings, preciso encontrar/criar índices
+      let sourceIdx: number;
+      let targetIdx: number;
+
+      if (typeof source === "string" && typeof target === "string") {
+        // Encontrar/criar índices para os nós
+        sourceIdx = nodes.findIndex((n) => n === source);
+        if (sourceIdx === -1) {
+          sourceIdx = nodes.length;
+          nodes.push(source);
+        }
+
+        targetIdx = nodes.findIndex((n) => n === target);
+        if (targetIdx === -1) {
+          targetIdx = nodes.length;
+          nodes.push(target);
+        }
+      } else {
+        // Assume que são índices numéricos
+        sourceIdx = toNumber(source, -1);
+        targetIdx = toNumber(target, -1);
+        if (!Number.isInteger(sourceIdx) || !Number.isInteger(targetIdx))
+          continue;
+        if (
+          sourceIdx < 0 ||
+          targetIdx < 0 ||
+          sourceIdx >= nodes.length ||
+          targetIdx >= nodes.length
+        )
+          continue;
+      }
+
+      const key = `${sourceIdx}->${targetIdx}`;
       linksAgg.set(key, (linksAgg.get(key) ?? 0) + toNumber(val, 0));
     }
 
@@ -82,11 +104,12 @@ export function normalizeSankey(raw: SankeyRaw): SankeyNormalized {
   // --- Formato 2: rows + values ---
   if ("rows" in raw) {
     const rows = raw.rows || [];
-    // aceita 'values' | 'weights' | 'v'
+    // aceita 'values' | 'weights' | 'v' | 'xps'
     const vals =
       (raw as any).values ??
       (raw as any).weights ??
       (raw as any).v ??
+      (raw as any).xps ??
       new Array(rows.length).fill(0);
 
     const labelToIndex = new Map<string, number>();

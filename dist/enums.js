@@ -61,11 +61,9 @@ var Dimension;
 // unidades/métricas mais comuns do console
 var Units;
 (function (Units) {
+    Units["L2Bps"] = "l2bps";
     Units["L3Bps"] = "l3bps";
     Units["PPS"] = "pps";
-    Units["Flows"] = "flows";
-    Units["Bytes"] = "bytes";
-    Units["Packets"] = "packets";
 })(Units || (exports.Units = Units = {}));
 // tipo de limite (ex.: top-n por média, pico, soma, etc.)
 var LimitType;

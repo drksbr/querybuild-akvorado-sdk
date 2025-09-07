@@ -54,11 +54,9 @@ export declare enum Dimension {
     TCPFlags = "TCPFlags"
 }
 export declare enum Units {
+    L2Bps = "l2bps",
     L3Bps = "l3bps",
-    PPS = "pps",
-    Flows = "flows",
-    Bytes = "bytes",
-    Packets = "packets"
+    PPS = "pps"
 }
 export declare enum LimitType {
     Avg = "avg",

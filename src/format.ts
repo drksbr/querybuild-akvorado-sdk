@@ -1,4 +1,3 @@
-// src/format.ts
 export function fmtBps(v?: number) {
   if (v == null) return "-";
   const units = ["bps", "Kbps", "Mbps", "Gbps", "Tbps", "Pbps"];

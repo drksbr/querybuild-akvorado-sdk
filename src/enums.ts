@@ -57,11 +57,9 @@ export enum Dimension {
 
 // unidades/métricas mais comuns do console
 export enum Units {
+  L2Bps = "l2bps",
   L3Bps = "l3bps",
   PPS = "pps",
-  Flows = "flows",
-  Bytes = "bytes",
-  Packets = "packets",
 }
 
 // tipo de limite (ex.: top-n por média, pico, soma, etc.)

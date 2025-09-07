@@ -14,8 +14,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.emitDotSankey = exports.normalizeSankey = void 0;
 __exportStar(require("./enums"), exports);
 __exportStar(require("./types"), exports);
 __exportStar(require("./builder"), exports);
 __exportStar(require("./client"), exports);
+__exportStar(require("./format"), exports);
+var sankey_normalize_1 = require("./sankey-normalize");
+Object.defineProperty(exports, "normalizeSankey", { enumerable: true, get: function () { return sankey_normalize_1.normalizeSankey; } });
+Object.defineProperty(exports, "emitDotSankey", { enumerable: true, get: function () { return sankey_normalize_1.emitDotSankey; } });
 //# sourceMappingURL=index.js.map

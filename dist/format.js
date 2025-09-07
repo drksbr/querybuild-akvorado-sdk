@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.fmtBps = fmtBps;
 exports.fmtPps = fmtPps;
 exports.fmtBytes = fmtBytes;
-// src/format.ts
 function fmtBps(v) {
     if (v == null)
         return "-";
