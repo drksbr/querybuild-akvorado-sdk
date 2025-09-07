@@ -1,0 +1,26 @@
+# Source files
+src/
+examples/
+tsconfig.json
+
+# Development files
+*.log
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db

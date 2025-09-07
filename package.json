@@ -1,0 +1,41 @@
+{
+    "name": "querybuild-akvorado-sdk",
+    "version": "1.0.3",
+    "description": "A TypeScript SDK helper for querying Akvorado flow analysis system API. Simplifies building complex flow queries, data retrieval, and visualization with Sankey diagrams for network traffic analysis.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**/*"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "npm run build",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "akvorado",
+        "api-helper",
+        "query-builder",
+        "network-flows",
+        "flow-analysis",
+        "sankey",
+        "network-monitoring",
+        "data-visualization",
+        "typescript",
+        "api-client"
+    ],
+    "author": "Isaac Ramon",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^24.3.1",
+        "typescript": "^5.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/isaacramon/querybuild-akvorado-sdk.git"
+    },
+    "bugs": {
+        "url": "https://github.com/isaacramon/querybuild-akvorado-sdk/issues"
+    },
+    "homepage": "https://github.com/isaacramon/querybuild-akvorado-sdk#readme"
+}
